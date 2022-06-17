@@ -1,0 +1,21 @@
+[debug] [2022-06-17T02:44:04.517Z] ----------------------------------------------------------------------
+[debug] [2022-06-17T02:44:04.520Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Alvaro\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-06-17T02:44:04.521Z] CLI Version:   11.1.0
+[debug] [2022-06-17T02:44:04.521Z] Platform:      win32
+[debug] [2022-06-17T02:44:04.521Z] Node Version:  v16.15.1
+[debug] [2022-06-17T02:44:04.522Z] Time:          Thu Jun 16 2022 21:44:04 GMT-0500 (hora estándar de Colombia)
+[debug] [2022-06-17T02:44:04.522Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-17T02:44:04.542Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-17T02:44:04.543Z] > authorizing via signed-in user (alvaro16a@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Alvaro\Documents\retoPreguntas\reto-training-intermedio-practica-personal\web
+

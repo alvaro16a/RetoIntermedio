@@ -1,0 +1,81 @@
+<p-toast></p-toast>
+<app-navbar></app-navbar>
+<div style="text-align: right;">   
+    
+</div>
+<div class="container">    
+    <div class="card text-center">
+        <div class="card-header">
+           <B>LOGIN</B> <i class="pi pi-user" style="font-size: 1rem;margin-left: 10px;"></i>          
+            <p-progressSpinner *ngIf="mostrar" [style]="{width: '20', height: '20px'}" styleClass="custom-spinner" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>            
+        </div>
+         
+        <div class="card-body" style="margin: 20px;">
+            <form [formGroup]="form">
+                <span class="p-float-label" style="margin: 20px;">
+                    <input 
+                        id="float-input" 
+                        type="text" 
+                        formControlName="email"
+                        pInputText> 
+                    <label for="float-input">Correo</label>
+                </span>                       
+
+                
+                <span class="p-float-label" style="margin: 20px;margin-top: 30px;">
+                    
+                    <input 
+                        id="float-input" 
+                        type="password" 
+                        formControlName="password"
+                        pInputText > 
+                    <label for="float-input">Contraseña</label>
+                </span>
+    
+                           
+                <button [disabled]="form.invalid" (click)="ingresar()" pButton pRipple type="button" label="Iniciar" class="p-button-outlined p-button-secondary" style="margin-bottom: 10px;"></button>                        
+                
+                <br>
+                      
+                 
+                <br>              
+                <p>Aun no tienes cuenta? <a href="/registro" >Registrate</a></p>   
+               
+               
+     
+            </form>           
+           
+        </div>
+        
+        <div>
+            
+        </div>        
+    </div>    
+    
+
+</div>
+<div class="container2">    
+    <button type="button" (click)="preguntasHome()" pButton pRipple label="Preguntas" class="p-button-danger mb-2"><i class="pi pi-user-edit" style="margin-top: 5px;"></i></button>     
+</div>
+
+
+
+<p-dialog header="Recuperar Contraseña" [(visible)]="displayModal" [modal]="true" [style]="{width: '20vw'}"
+    [draggable]="false" [resizable]="false">
+    <p-progressSpinner *ngIf="mostrar2" [style]="{width: '20', height: '20px'}" styleClass="custom-spinner" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>
+    <p>Llegará un email si tu correo se encuentra registrado</p>
+    <form [formGroup]="form2">
+        <div class="col-12 md:col-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+                <input formControlName="email"  type="text" pInputText placeholder="Ejemplo01@gmail.com">         
+            </div>
+        </div>
+        <div class="centrar">
+            <button [disabled]="form2.invalid" (click)="recuperarEmail()" pButton pRipple type="button" label="Enviar" class="p-button-outlined p-button-secondary" style="margin-top: 30px;"></button>
+
+        </div>
+    </form>
+       
+   
+</p-dialog> 

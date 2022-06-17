@@ -1,0 +1,32 @@
+<p-toast></p-toast>
+<ng-template #content let-modal>
+    
+    <div class="modal-body">
+        <div class="container">
+            <div class="card text-center">
+                    <div class="card-header fs-4 font1">
+                        <b>Envia tu respuesta</b>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="form-floating">
+                            <textarea  [(ngModel)]="answer.answer" class="form-control m-2" placeholder="Leave a comment here" id="question" style="height: 150px"
+                            ></textarea>
+                            <label for="floatingTextarea">Respuesta</label>
+                        </div>                         
+                        <p-rating [cancel]="false" [(ngModel)]="answer.position"></p-rating>
+                        <br>
+                        <button pButton (click)="saveAnswer()" pRipple type="button" label="Enviar respuesta" class="p-button-outlined p-button-info"></button>
+                   
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    
+        <div class="modal-footer">            
+            <button pButton pRipple type="button" label="Cerrar" class="p-button-outlined p-button-secondary" (click)="modal.close('Close click')"></button>
+    </div>
+  </ng-template>
+  <button pButton pRipple type="button" disabled="true" label="Inicia Sesión Antes de Responder" class="p-button-outlined p-button-danger" *ngIf="!authService.userData"></button> 
+  <button class="btn btn-outline-primary mb-2 me-2" (click)="openVerticallyCentered(content)" *ngIf="authService.userData">Contestar a esta pregunta</button>
+  

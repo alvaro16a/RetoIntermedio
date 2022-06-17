@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <div class="card text-center">
+          <div class="card-header fs-1 font1">
+            {{ question?.answers?.length }}
+            
+          </div>
+          <div class="card-body" >
+            <h5 class="card-text font1">Total Respuestas</h5>
+          </div>
+          <div class="card-footer text-muted">            
+          </div>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="card text-center">
+          <div class="card-header fs-1 font1">
+            {{ question?.question }}
+           
+          </div>
+          <div class="card-body" style="margin-right: 40px; margin-left: 40px">
+            <h5 class="card-text font1">Tipo: {{ question?.type }}</h5>
+            <p class="card-text font1">Categoria: {{ question?.category }}</p>
+          </div>
+          <div class="card-footer text-muted">
+            <app-answer [item]="question"></app-answer>
+          </div>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="accordion" id="accordionExample"  *ngFor="let questions of answers">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h5 class="text-center">Respuesta: </h5>
+                <p-rating [cancel]="false" [(ngModel)]="questions.position" [disabled]="true"></p-rating>
+     
+                
+                <!-- Respuesta -->
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <p>{{ questions.answer }}</p>           
+              <div class="accordion-body">
+                <strong></strong> 
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
