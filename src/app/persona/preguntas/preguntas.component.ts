@@ -15,7 +15,8 @@ export class PreguntasComponent implements OnInit {
   totalQuestions: number = 0;
 
   questions: QuestionI[] | undefined;
-  user: any = '';
+  
+  user:string=this.authService.userData;
   page: number = 0;
   pages: Array<number> | undefined;
   disabled: boolean = false;

@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+
+
+<div style="text-align: right"></div>
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <B>Verificacion</B>
+            <i class="pi pi-user" style="font-size: 1rem; margin-left: 10px"></i>
+        </div>
+
+        <!-- Animacion se muestra deacuerdo al valor de la variable mostrar-->
+        <p-progressSpinner [style]="{ width: '200px', height: '200px' }" styleClass="custom-spinner" strokeWidth="8"
+            fill="var(--surface-ground)" animationDuration="85.0s"></p-progressSpinner>
+
+        <p style="max-width: 300px;text-align: justify; padding: 15px;">valide su cuenta dando click en el enlace que llego a la bandeja de entrada de su correo</p>
+    </div>
+</div>
+<div class="container2">
+    <button type="button" (click)="reenviar()" pButton pRipple label="Reenviar" class="p-button-danger mb-2">
+        <i class="pi pi-user-edit" style="margin-right: 5px"></i>
+    </button>
+</div>

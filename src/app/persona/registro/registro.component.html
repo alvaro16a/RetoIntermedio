@@ -6,6 +6,8 @@
     <div class="card-header">
       <B>REGISTRO</B>
       <i class="pi pi-user" style="font-size: 1rem; margin-left: 10px"></i>
+
+      <!-- Animacion se muestra deacuerdo al valor de la variable mostrar-->
       <p-progressSpinner
         *ngIf="mostrar"
         [style]="{ width: '20', height: '20px' }"
@@ -18,6 +20,8 @@
 
     <div class="card-body" style="margin: 20px">
       <form [formGroup]="form">
+        
+        <!-- Input correo-->
         <span class="p-float-label" style="margin: 20px">
           <input
             id="float-input"
@@ -28,6 +32,7 @@
           <label for="float-input">Correo</label>
         </span>
 
+        <!-- Input contraseña-->
         <span class="p-float-label" style="margin: 20px; margin-top: 30px">
           <p-password formControlName="password">
             <ng-template pTemplate="header">
@@ -47,7 +52,7 @@
         </span>
         <button
           [disabled]="form.invalid"
-          (click)="ingresar()"
+          (click)="registrarse()"
           pButton
           pRipple
           type="button"

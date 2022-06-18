@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
@@ -17,7 +17,8 @@ export class ServiceService {
   constructor(
     public afauth: AngularFireAuth,
     public store: AngularFirestore,
-    public router: Router
+    public router: Router,
+    public ngZone: NgZone //notifica si hay tareas en cola
   ) {
     this.afauth.authState.subscribe((user) => {
       if (user) {
@@ -32,18 +33,58 @@ export class ServiceService {
   }
 
   async login(email: string, password: string) {
-    try {
-      return await this.afauth
-        .signInWithEmailAndPassword(email, password)      
-        
-    } catch (error) {
-      return null;
-    }
+
+    return this.afauth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        if (result.user?.emailVerified == true) {
+          console.log(result.user)
+          this.ngZone.run(() => {
+            this.router.navigate(['preguntas']);
+          });
+          this.SetUserData(result.user);
+        } else {
+          this.afauth.signOut()
+            .then(() => {
+              window.alert("El usuario no ha validado su perfil");
+              window.location.reload() 
+            })
+        }
+
+      })
+      .catch((error) => {
+        window.alert(error.message);
+      });
+   
   }
+
+  //registrarse con email y contraseña
+  SignUp(email: string, password: string) {
+    return this.afauth
+      .createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+
+        this.VerificationMail();
+        this.SetUserData(result.user);
+      })
+      .catch((error) => {
+        window.alert("El cooreo ingresado no se pudo verificar");
+      });
+  }
+
+  // Send email verfificaiton when new user sign up
+  VerificationMail() {
+    return this.afauth.currentUser
+      .then((u: any) => u.sendEmailVerification())
+      .then(() => {
+        this.router.navigate(['verificar-correo']);
+      });
+  }
+
   async loginRegistre(email: string, password: string) {
     try {
       return await this.afauth
-        .createUserWithEmailAndPassword(email, password)        
+        .createUserWithEmailAndPassword(email, password)
     } catch (error) {
       return null;
     }
@@ -59,7 +100,7 @@ export class ServiceService {
   async loginGoogle(email: string, password: string) {
     try {
       return await this.afauth
-        .signInWithPopup(new firebase.auth.GoogleAuthProvider())       
+        .signInWithPopup(new firebase.auth.GoogleAuthProvider())
     } catch (error) {
       return null;
     }

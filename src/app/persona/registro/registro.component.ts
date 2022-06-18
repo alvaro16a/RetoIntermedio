@@ -29,7 +29,16 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  registrarse(){
+    this.mostrar = !this.mostrar; //habilita el efecto de carga
+    this.authService
+      .SignUp(this.form.value.email, this.form.value.password)
+    
+  }
+
   ingresar() {
+
+    /*
     this.mostrar = !this.mostrar;    
     this.authService
       .loginRegistre(this.form.value.email, this.form.value.password)
@@ -53,6 +62,7 @@ export class RegistroComponent implements OnInit {
 
         this.mostrar = !this.mostrar;
       });
+      */
   }
   ingresarGoogle() {
     this.mostrar = !this.mostrar;    

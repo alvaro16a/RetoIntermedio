@@ -18,6 +18,7 @@ import { ServiceService } from 'src/app/Service/service.service';
 })
 export class QuestionComponent implements OnInit {
   answers: AnswerI[] | undefined;
+  name:string=this.authService.userData.displayName;
   question: answe = {
     id:
       this.authService.userData.uid == undefined
@@ -43,8 +44,10 @@ export class QuestionComponent implements OnInit {
     private messageService: MessageService
   ) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+   
+  }
+  public usuario=JSON.parse(localStorage.getItem('user')!)
   openVerticallyCentered(content: any) {
     this.modalService.open(content, { centered: true });
   }
