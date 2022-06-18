@@ -33,7 +33,6 @@ export class ServiceService {
   }
 
   async login(email: string, password: string) {
-
     return this.afauth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
@@ -50,16 +49,14 @@ export class ServiceService {
               window.location.reload() 
             })
         }
-
       })
       .catch((error) => {
         window.alert(error.message);
       });
-   
   }
 
   //registrarse con email y contraseña
-  SignUp(email: string, password: string) {
+  async SignUp(email: string, password: string) {
     return this.afauth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
@@ -73,21 +70,12 @@ export class ServiceService {
   }
 
   // Send email verfificaiton when new user sign up
-  VerificationMail() {
+  async VerificationMail() {
     return this.afauth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
         this.router.navigate(['verificar-correo']);
       });
-  }
-
-  async loginRegistre(email: string, password: string) {
-    try {
-      return await this.afauth
-        .createUserWithEmailAndPassword(email, password)
-    } catch (error) {
-      return null;
-    }
   }
 
   async resetPassword(email: string) {

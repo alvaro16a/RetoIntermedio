@@ -131,4 +131,7 @@ export class LoginComponent implements OnInit {
       this.mostrar2 = !this.mostrar2;
     } catch (error) {}
   }
+
+  
+
 }
